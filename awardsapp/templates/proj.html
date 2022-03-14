@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container project">
+    <div class="row">
+        <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div id="regis">
+            <div class="form-data">
+                <form action="{%url 'project' %}" method="post" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    <h2 >Post A Project</h2>
+                    {% bootstrap_form form%}
+                    <button class="btn btn-outline-dark bg-dark text-white rounded-pill" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+</div>
+{% endblock %}

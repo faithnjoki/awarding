@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{% block content %}
+{{block.super}}
+
+<div class="container-fluid">
+    <div class="home">
+        <h1 class="text-center">Welcome to Awards</1>
+            <div class="">
+                <form action="/project/project/">
+                    <input type="submit" class="btn btn-outline-dark bg-dark text-white"
+                        value="Post a Project" />
+                </form>
+            </div><br>
+    </div>
+    <h2 align="center"><u>Posted Projects</u></h2><br>
+  <div class="row">
+    {% for proj in proj %}
+      <div class="col-md-4">
+        <div class="card-group">
+          <div class="card">
+            <a href="{%url 'project_details' proj.id%}"><img class="card-img-top" src="{{proj.image.url}}" alt="Card image cap">
+            </a>
+            <div class="card__share">
+              <a id="share" class="share-icon" href="{{proj.url}}" target="_blank"><i class="fa fa-share"></i></a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{proj.project_name}}</h5>
+              <p class="card-text">{{proj.description}}</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Posted {{proj.date |timesince }} ago!</small><br>
+              <button class="btn btn-outline-dark bg-dark text-white"><a style="color:white" href="{%url 'project_details' proj.id%}">Rate Project</a></button>
+            </div>
+          </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
